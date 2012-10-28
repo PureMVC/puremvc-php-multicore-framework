@@ -1,0 +1,10 @@
+PureMVC MultiCore Framework for PHP (Ported)
+--------------------------------------------------------------------------
+Release Date: 10/28/2012
+    Platform: PHP 5 
+     Version: 1 
+    Revision: 0
+       Minor: 0
+     Authors: Michel Chouinard <michel.chouinard@puremvc.org>     		
+--------------------------------------------------------------------------
+1.0.0 - Initial MultiCore PHP Port. Based on PureMVC AS3 MultiCore 1.0.5. 

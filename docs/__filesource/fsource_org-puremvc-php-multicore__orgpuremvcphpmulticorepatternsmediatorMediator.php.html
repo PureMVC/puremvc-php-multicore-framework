@@ -1,0 +1,232 @@
+<html>
+<head>
+<title>File Source for Mediator.php</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">org-puremvc-php-multicore</td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                    
+                                      [ <a href="../classtrees_org-puremvc-php-multicore.html" class="menu">class tree: org-puremvc-php-multicore</a> ]
+          [ <a href="../elementindex_org-puremvc-php-multicore.html" class="menu">index: org-puremvc-php-multicore</a> ]
+                [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+    <div id="ric">
+                    <p><a href="../ric_LICENSE.html">LICENSE</a></p>
+                    <p><a href="../ric_VERSION.html">VERSION</a></p>
+            </div>
+      <b>Packages:</b><br />
+              <a href="../li_org-puremvc-php-multicore.html">org-puremvc-php-multicore</a><br />
+            <br /><br />
+            
+      
+      
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1 align="center">Source for file Mediator.php</h1>
+<p>Documentation is available at <a href="../org-puremvc-php-multicore/_org---puremvc---php---multicore---patterns---mediator---Mediator.php.html">Mediator.php</a></p>
+<div class="src-code">
+<ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;PureMVC&nbsp;Multicore&nbsp;Port&nbsp;to&nbsp;PHP</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;Partly&nbsp;based&nbsp;on&nbsp;PureMVC&nbsp;Port&nbsp;to&nbsp;PHP&nbsp;by:</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;-&nbsp;Omar&nbsp;Gonzalez&nbsp;&lt;omar@almerblank.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;-&nbsp;and&nbsp;Hasan&nbsp;Otuome&nbsp;&lt;hasan@almerblank.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;Created&nbsp;on&nbsp;Jully&nbsp;24,&nbsp;2009</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;1.0</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;Michel&nbsp;Chouinard&nbsp;&lt;michel.chouinard@gmail.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@copyright</span><span class="src-doc">&nbsp;PureMVC&nbsp;-&nbsp;Copyright(c)&nbsp;2006-2008&nbsp;Futurescale,&nbsp;Inc.,&nbsp;Some&nbsp;rights&nbsp;reserved.</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;http://creativecommons.org/licenses/by/3.0/&nbsp;Creative&nbsp;Commons&nbsp;Attribution&nbsp;3.0&nbsp;Unported&nbsp;License</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;org.puremvc.php.multicore</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">'org/puremvc/php/multicore/interfaces/INotification.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">'org/puremvc/php/multicore/interfaces/IMediator.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">'org/puremvc/php/multicore/patterns/observer/Notifier.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-doc">&nbsp;*&nbsp;A&nbsp;base&nbsp;&lt;b&gt;IMediator&lt;/b&gt;&nbsp;implementation.</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-doc">&nbsp;&nbsp;*&nbsp;In&nbsp;PureMVC,&nbsp;&lt;b&gt;IMediator&lt;/b&gt;&nbsp;implementors&nbsp;assume&nbsp;these&nbsp;responsibilities:</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-doc">&nbsp;*&nbsp;-&nbsp;Implement&nbsp;a&nbsp;common&nbsp;method&nbsp;which&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;&lt;b&gt;INotification&lt;/b&gt;s</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&nbsp;the&nbsp;&lt;b&gt;IMediator&lt;/b&gt;&nbsp;has&nbsp;interest&nbsp;in.</span></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-doc">&nbsp;*&nbsp;-&nbsp;Implement&nbsp;a&nbsp;notification&nbsp;callback&nbsp;method.</span></div></li>
+<li><div class="src-line"><a name="a33"></a><span class="src-doc">&nbsp;*&nbsp;-&nbsp;Implement&nbsp;methods&nbsp;that&nbsp;are&nbsp;called&nbsp;when&nbsp;the&nbsp;IMediator&nbsp;is&nbsp;registered&nbsp;or&nbsp;removed&nbsp;from&nbsp;the&nbsp;View.</span></div></li>
+<li><div class="src-line"><a name="a34"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a35"></a><span class="src-doc">&nbsp;*&nbsp;Additionally,&nbsp;&lt;b&gt;IMediator&lt;/b&gt;s&nbsp;typically:</span></div></li>
+<li><div class="src-line"><a name="a36"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a37"></a><span class="src-doc">&nbsp;*&nbsp;-&nbsp;Act&nbsp;as&nbsp;an&nbsp;intermediary&nbsp;between&nbsp;one&nbsp;or&nbsp;more&nbsp;view&nbsp;components&nbsp;such&nbsp;as&nbsp;text&nbsp;boxes&nbsp;or</span></div></li>
+<li><div class="src-line"><a name="a38"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&nbsp;list&nbsp;controls,&nbsp;maintaining&nbsp;references&nbsp;and&nbsp;coordinating&nbsp;their&nbsp;behavior.</span></div></li>
+<li><div class="src-line"><a name="a39"></a><span class="src-doc">&nbsp;*&nbsp;-&nbsp;This&nbsp;is&nbsp;often&nbsp;the&nbsp;place&nbsp;where&nbsp;event&nbsp;listeners&nbsp;are&nbsp;added&nbsp;to&nbsp;view</span></div></li>
+<li><div class="src-line"><a name="a40"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&nbsp;components,&nbsp;and&nbsp;their&nbsp;handlers&nbsp;implemented.</span></div></li>
+<li><div class="src-line"><a name="a41"></a><span class="src-doc">&nbsp;*&nbsp;-&nbsp;Respond&nbsp;to&nbsp;and&nbsp;generate&nbsp;&lt;b&gt;INotifications&lt;/b&gt;,&nbsp;interacting&nbsp;with&nbsp;of</span></div></li>
+<li><div class="src-line"><a name="a42"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;&nbsp;the&nbsp;rest&nbsp;of&nbsp;the&nbsp;PureMVC&nbsp;app.</span></div></li>
+<li><div class="src-line"><a name="a43"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a44"></a><span class="src-doc">&nbsp;*&nbsp;When&nbsp;an&nbsp;&lt;b&gt;IMediator&lt;/b&gt;&nbsp;is&nbsp;registered&nbsp;with&nbsp;the&nbsp;&lt;b&gt;IView&lt;/b&gt;,</span></div></li>
+<li><div class="src-line"><a name="a45"></a><span class="src-doc">&nbsp;*&nbsp;the&nbsp;&lt;b&gt;IView&lt;/b&gt;&nbsp;will&nbsp;call&nbsp;the&nbsp;&lt;b&gt;IMediator&lt;/b&gt;'s</span></div></li>
+<li><div class="src-line"><a name="a46"></a><span class="src-doc">&nbsp;*&nbsp;&lt;b&gt;listNotificationInterests&lt;/b&gt;&nbsp;method.&nbsp;The&nbsp;&lt;b&gt;IMediator&lt;/b&gt;&nbsp;will</span></div></li>
+<li><div class="src-line"><a name="a47"></a><span class="src-doc">&nbsp;*&nbsp;return&nbsp;an&nbsp;&lt;b&gt;Array&lt;/b&gt;&nbsp;of&nbsp;&lt;b&gt;INotification&lt;/b&gt;&nbsp;names&nbsp;which</span></div></li>
+<li><div class="src-line"><a name="a48"></a><span class="src-doc">&nbsp;*&nbsp;it&nbsp;wishes&nbsp;to&nbsp;be&nbsp;notified&nbsp;about.</span></div></li>
+<li><div class="src-line"><a name="a49"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a50"></a><span class="src-doc">&nbsp;*&nbsp;The&nbsp;&lt;b&gt;IView&lt;/b&gt;&nbsp;will&nbsp;then&nbsp;create&nbsp;an&nbsp;&lt;b&gt;Observer&lt;/b&gt;&nbsp;object&nbsp;encapsulating</span></div></li>
+<li><div class="src-line"><a name="a51"></a><span class="src-doc">&nbsp;*&nbsp;that&nbsp;&lt;b&gt;IMediator&lt;/b&gt;'s&nbsp;(&lt;b&gt;handleNotification&lt;/b&gt;)&nbsp;method&nbsp;and</span></div></li>
+<li><div class="src-line"><a name="a52"></a><span class="src-doc">&nbsp;*&nbsp;register&nbsp;it&nbsp;as&nbsp;an&nbsp;Observer&nbsp;for&nbsp;each&nbsp;&lt;b&gt;INotification&lt;/b&gt;&nbsp;name</span></div></li>
+<li><div class="src-line"><a name="a53"></a><span class="src-doc">&nbsp;*&nbsp;returned&nbsp;by&nbsp;&lt;b&gt;listNotificationInterests&lt;/b&gt;.</span></div></li>
+<li><div class="src-line"><a name="a54"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a55"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;org.puremvc.php.multicore</span></div></li>
+<li><div class="src-line"><a name="a56"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@see</span><span class="src-doc">&nbsp;View</span></div></li>
+<li><div class="src-line"><a name="a57"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.puremvc.php.multicore.core.View.php</span></div></li>
+<li><div class="src-line"><a name="a58"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a59"></a><span class="src-key">class&nbsp;</span><a href="../org-puremvc-php-multicore/Mediator.html">Mediator</a>&nbsp;<span class="src-key">extends&nbsp;</span><a href="../org-puremvc-php-multicore/Notifier.html">Notifier</a>&nbsp;<span class="src-key">implements&nbsp;</span><a href="../org-puremvc-php-multicore/IMediator.html">IMediator</a><span class="src-sym">,&nbsp;</span><a href="../org-puremvc-php-multicore/INotifier.html">INotifier</a></div></li>
+<li><div class="src-line"><a name="a60"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a63"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;The&nbsp;default&nbsp;name&nbsp;of&nbsp;the&nbsp;&lt;b&gt;Mediator&lt;/b&gt;.</span></div></li>
+<li><div class="src-line"><a name="a64"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a65"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Typically,&nbsp;a&nbsp;&lt;b&gt;Mediator&lt;/b&gt;&nbsp;will&nbsp;be&nbsp;written&nbsp;to&nbsp;serve</span></div></li>
+<li><div class="src-line"><a name="a66"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;one&nbsp;specific&nbsp;control&nbsp;or&nbsp;group&nbsp;controls&nbsp;and&nbsp;so,</span></div></li>
+<li><div class="src-line"><a name="a67"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;will&nbsp;not&nbsp;have&nbsp;a&nbsp;need&nbsp;to&nbsp;be&nbsp;dynamically&nbsp;named.</span></div></li>
+<li><div class="src-line"><a name="a68"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">const&nbsp;</span><a href="../org-puremvc-php-multicore/Mediator.html#constNAME">NAME</a>&nbsp;=&nbsp;<span class="src-str">'Mediator'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a72"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;the&nbsp;mediator&nbsp;name</span></div></li>
+<li><div class="src-line"><a name="a73"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc-type">string&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a74"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">protected&nbsp;</span><a href="../org-puremvc-php-multicore/Mediator.html#var$mediatorName">$mediatorName</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a78"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;The&nbsp;view&nbsp;component</span></div></li>
+<li><div class="src-line"><a name="a79"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a80"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">protected&nbsp;</span><a href="../org-puremvc-php-multicore/Mediator.html#var$viewComponent">$viewComponent</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a84"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Constructor.</span></div></li>
+<li><div class="src-line"><a name="a85"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../org-puremvc-php-multicore/Mediator.html#method__construct">__construct</a><span class="src-sym">(&nbsp;</span><span class="src-var">$mediatorName</span>=<span class="src-str">&quot;&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$viewComponent</span>=<span class="src-id">null&nbsp;</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../org-puremvc-php-multicore/Mediator.html#var$mediatorName">mediatorName</a>&nbsp;=&nbsp;&nbsp;<span class="src-sym">!</span><span class="src-key">empty</span><span class="src-sym">(</span><span class="src-var">$mediatorName</span><span class="src-sym">)&nbsp;</span>?&nbsp;<span class="src-var">$mediatorName&nbsp;</span>:&nbsp;<span class="src-id"><a href="../org-puremvc-php-multicore/Mediator.html">Mediator</a></span><span class="src-sym">::</span><span class="src-id">NAME</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../org-puremvc-php-multicore/Mediator.html#methodsetViewComponent">setViewComponent</a><span class="src-sym">(&nbsp;</span><span class="src-var">$viewComponent&nbsp;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a93"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Get&nbsp;Mediator&nbsp;Name</span></div></li>
+<li><div class="src-line"><a name="a94"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a95"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Get&nbsp;the&nbsp;&lt;b&gt;IMediator&lt;/b&gt;&nbsp;instance&nbsp;name</span></div></li>
+<li><div class="src-line"><a name="a96"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a97"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">The&nbsp;&lt;b&gt;IMediator&lt;/b&gt;&nbsp;instance&nbsp;name.</span></div></li>
+<li><div class="src-line"><a name="a98"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../org-puremvc-php-multicore/Mediator.html#methodgetMediatorName">getMediatorName</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../org-puremvc-php-multicore/Mediator.html#var$mediatorName">mediatorName</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a105"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Get&nbsp;View&nbsp;Component</span></div></li>
+<li><div class="src-line"><a name="a106"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a107"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Get&nbsp;the&nbsp;&lt;b&gt;IMediator&lt;/b&gt;'s&nbsp;view&nbsp;component.</span></div></li>
+<li><div class="src-line"><a name="a108"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a109"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">The&nbsp;view&nbsp;component</span></div></li>
+<li><div class="src-line"><a name="a110"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../org-puremvc-php-multicore/Mediator.html#methodgetViewComponent">getViewComponent</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a112"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../org-puremvc-php-multicore/Mediator.html#var$viewComponent">viewComponent</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a117"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Set&nbsp;View&nbsp;Component</span></div></li>
+<li><div class="src-line"><a name="a118"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a119"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Set&nbsp;the&nbsp;&lt;b&gt;IMediator&lt;/b&gt;'s&nbsp;view&nbsp;component.</span></div></li>
+<li><div class="src-line"><a name="a120"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a121"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc-var">$viewComponent&nbsp;</span><span class="src-doc">The&nbsp;view&nbsp;component.</span></div></li>
+<li><div class="src-line"><a name="a122"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">void&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a123"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../org-puremvc-php-multicore/Mediator.html#methodsetViewComponent">setViewComponent</a><span class="src-sym">(&nbsp;</span><span class="src-var">$viewComponent&nbsp;</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a125"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a126"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../org-puremvc-php-multicore/Mediator.html#var$viewComponent">viewComponent</a>&nbsp;=&nbsp;<span class="src-var">$viewComponent</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a127"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a128"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a129"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a130"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;List&nbsp;Notifications&nbsp;Interests.</span></div></li>
+<li><div class="src-line"><a name="a131"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a132"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;List&nbsp;&lt;b&gt;INotification&lt;/b&gt;&nbsp;interests.</span></div></li>
+<li><div class="src-line"><a name="a133"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a134"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">array&nbsp;</span><span class="src-doc">An&nbsp;&lt;b&gt;Array&lt;/b&gt;&nbsp;of&nbsp;the&nbsp;&lt;b&gt;INotification&lt;/b&gt;&nbsp;names&nbsp;this&nbsp;&lt;b&gt;IMediator&lt;/b&gt;&nbsp;has&nbsp;an&nbsp;interest&nbsp;in.</span></div></li>
+<li><div class="src-line"><a name="a135"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a136"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../org-puremvc-php-multicore/Mediator.html#methodlistNotificationInterests">listNotificationInterests</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a137"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a138"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a139"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a140"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a141"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a142"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Handle&nbsp;Notification</span></div></li>
+<li><div class="src-line"><a name="a143"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a144"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Handle&nbsp;an&nbsp;&lt;b&gt;INotification&lt;/b&gt;.</span></div></li>
+<li><div class="src-line"><a name="a145"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a146"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">INotification&nbsp;</span><span class="src-doc-var">$notification&nbsp;</span><span class="src-doc">The&nbsp;&lt;b&gt;INotification&lt;/b&gt;&nbsp;to&nbsp;be&nbsp;handled.</span></div></li>
+<li><div class="src-line"><a name="a147"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">void&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a148"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a149"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../org-puremvc-php-multicore/Mediator.html#methodhandleNotification">handleNotification</a><span class="src-sym">(&nbsp;</span><span class="src-id">INotification&nbsp;</span><span class="src-var">$notification&nbsp;</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a150"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a151"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a152"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a153"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a154"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;onRegister&nbsp;event</span></div></li>
+<li><div class="src-line"><a name="a155"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a156"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Called&nbsp;by&nbsp;the&nbsp;&lt;b&gt;View&lt;/b&gt;&nbsp;when&nbsp;the&nbsp;&lt;b&gt;Mediator&lt;/b&gt;&nbsp;is&nbsp;registered.</span></div></li>
+<li><div class="src-line"><a name="a157"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a158"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">void&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a159"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a160"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../org-puremvc-php-multicore/Mediator.html#methodonRegister">onRegister</a><span class="src-sym">(&nbsp;</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a161"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a162"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a163"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a164"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a165"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;onRemove&nbsp;event</span></div></li>
+<li><div class="src-line"><a name="a166"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a167"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Called&nbsp;by&nbsp;the&nbsp;&lt;b&gt;View&lt;/b&gt;&nbsp;when&nbsp;the&nbsp;&lt;b&gt;Mediator&lt;/b&gt;&nbsp;is&nbsp;removed.</span></div></li>
+<li><div class="src-line"><a name="a168"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a169"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">void;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a170"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a171"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../org-puremvc-php-multicore/Mediator.html#methodonRemove">onRemove</a><span class="src-sym">(&nbsp;</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a172"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a173"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a174"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a175"></a><span class="src-sym">}</span></div></li>
+</ol>
+</div>
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Mon, 03 Aug 2009 04:57:58 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>File Source for INotifier.php</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">org-puremvc-php-multicore</td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                    
+                                      [ <a href="../classtrees_org-puremvc-php-multicore.html" class="menu">class tree: org-puremvc-php-multicore</a> ]
+          [ <a href="../elementindex_org-puremvc-php-multicore.html" class="menu">index: org-puremvc-php-multicore</a> ]
+                [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+    <div id="ric">
+                    <p><a href="../ric_LICENSE.html">LICENSE</a></p>
+                    <p><a href="../ric_VERSION.html">VERSION</a></p>
+            </div>
+      <b>Packages:</b><br />
+              <a href="../li_org-puremvc-php-multicore.html">org-puremvc-php-multicore</a><br />
+            <br /><br />
+            
+      
+      
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1 align="center">Source for file INotifier.php</h1>
+<p>Documentation is available at <a href="../org-puremvc-php-multicore/_org---puremvc---php---multicore---interfaces---INotifier.php.html">INotifier.php</a></p>
+<div class="src-code">
+<ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;PureMVC&nbsp;Multicore&nbsp;Port&nbsp;to&nbsp;PHP</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;Partly&nbsp;based&nbsp;on&nbsp;PureMVC&nbsp;Port&nbsp;to&nbsp;PHP&nbsp;by:</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;-&nbsp;Omar&nbsp;Gonzalez&nbsp;&lt;omar@almerblank.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;-&nbsp;and&nbsp;Hasan&nbsp;Otuome&nbsp;&lt;hasan@almerblank.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;Created&nbsp;on&nbsp;Jully&nbsp;24,&nbsp;2009</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@version</span><span class="src-doc">&nbsp;1.0</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;Michel&nbsp;Chouinard&nbsp;&lt;michel.chouinard@gmail.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@copyright</span><span class="src-doc">&nbsp;PureMVC&nbsp;-&nbsp;Copyright(c)&nbsp;2006-2008&nbsp;Futurescale,&nbsp;Inc.,&nbsp;Some&nbsp;rights&nbsp;reserved.</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;http://creativecommons.org/licenses/by/3.0/&nbsp;Creative&nbsp;Commons&nbsp;Attribution&nbsp;3.0&nbsp;Unported&nbsp;License</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;org.puremvc.php.multicore</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-doc">&nbsp;*&nbsp;The&nbsp;interface&nbsp;definition&nbsp;for&nbsp;a&nbsp;PureMVC&nbsp;Notifier.</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-doc">&nbsp;*&nbsp;&lt;b&gt;MacroCommand,&nbsp;SimpleCommand,&nbsp;Mediator&lt;/b&gt;&nbsp;and&nbsp;&lt;b&gt;Proxy&lt;/b&gt;</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-doc">&nbsp;*&nbsp;all&nbsp;have&nbsp;a&nbsp;need&nbsp;to&nbsp;send&nbsp;&lt;b&gt;Notifications&lt;/b&gt;.</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-doc">&nbsp;*&nbsp;The&nbsp;&lt;b&gt;INotifier&lt;/b&gt;&nbsp;interface&nbsp;provides&nbsp;a&nbsp;common&nbsp;method&nbsp;called</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-doc">&nbsp;*&nbsp;&lt;b&gt;sendNotification&lt;/b&gt;&nbsp;that&nbsp;relieves&nbsp;implementation&nbsp;code&nbsp;of</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-doc">&nbsp;*&nbsp;the&nbsp;necessity&nbsp;to&nbsp;actually&nbsp;construct&nbsp;&lt;b&gt;Notifications&lt;/b&gt;.</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-doc">&nbsp;*&nbsp;The&nbsp;&lt;b&gt;Notifier&lt;/b&gt;&nbsp;class,&nbsp;which&nbsp;all&nbsp;of&nbsp;the&nbsp;above&nbsp;mentioned&nbsp;classes</span></div></li>
+<li><div class="src-line"><a name="a33"></a><span class="src-doc">&nbsp;*&nbsp;extend,&nbsp;also&nbsp;provides&nbsp;an&nbsp;initialized&nbsp;reference&nbsp;to&nbsp;the&nbsp;&lt;b&gt;Facade&lt;/b&gt;</span></div></li>
+<li><div class="src-line"><a name="a34"></a><span class="src-doc">&nbsp;*&nbsp;Singleton,&nbsp;which&nbsp;is&nbsp;required&nbsp;for&nbsp;the&nbsp;convienience&nbsp;method</span></div></li>
+<li><div class="src-line"><a name="a35"></a><span class="src-doc">&nbsp;*&nbsp;for&nbsp;sending&nbsp;&lt;b&gt;Notifications&lt;/b&gt;,&nbsp;but&nbsp;also&nbsp;eases&nbsp;implementation&nbsp;as&nbsp;these</span></div></li>
+<li><div class="src-line"><a name="a36"></a><span class="src-doc">&nbsp;*&nbsp;classes&nbsp;have&nbsp;frequent&nbsp;&lt;b&gt;Facade&lt;/b&gt;&nbsp;interactions&nbsp;and&nbsp;usually&nbsp;require</span></div></li>
+<li><div class="src-line"><a name="a37"></a><span class="src-doc">&nbsp;*&nbsp;access&nbsp;to&nbsp;the&nbsp;facade&nbsp;anyway.</span></div></li>
+<li><div class="src-line"><a name="a38"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a39"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@see</span><span class="src-doc">&nbsp;IFacade</span></div></li>
+<li><div class="src-line"><a name="a40"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org\puremvc\php\multicore\interfaces\IFacade.php</span></div></li>
+<li><div class="src-line"><a name="a41"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@see</span><span class="src-doc">&nbsp;INotification</span></div></li>
+<li><div class="src-line"><a name="a42"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org\puremvc\php\multicore\interfaces\INotification.php</span></div></li>
+<li><div class="src-line"><a name="a43"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;org.puremvc.php.multicore</span></div></li>
+<li><div class="src-line"><a name="a44"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a45"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a46"></a><span class="src-key">interface&nbsp;</span><a href="../org-puremvc-php-multicore/INotifier.html">INotifier</a></div></li>
+<li><div class="src-line"><a name="a47"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a49"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Send&nbsp;a&nbsp;&lt;b&gt;INotification&lt;/b&gt;.</span></div></li>
+<li><div class="src-line"><a name="a50"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a51"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Convenience&nbsp;method&nbsp;to&nbsp;prevent&nbsp;having&nbsp;to&nbsp;construct&nbsp;new</span></div></li>
+<li><div class="src-line"><a name="a52"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;notification&nbsp;instances&nbsp;in&nbsp;our&nbsp;implementation&nbsp;code.</span></div></li>
+<li><div class="src-line"><a name="a53"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a54"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$notificationName&nbsp;</span><span class="src-doc">The&nbsp;name&nbsp;of&nbsp;the&nbsp;notification&nbsp;to&nbsp;send.</span></div></li>
+<li><div class="src-line"><a name="a55"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc-var">$body&nbsp;</span><span class="src-doc">The&nbsp;body&nbsp;of&nbsp;the&nbsp;notification&nbsp;(optional).</span></div></li>
+<li><div class="src-line"><a name="a56"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$type&nbsp;</span><span class="src-doc">The&nbsp;type&nbsp;of&nbsp;the&nbsp;notification&nbsp;(optional).</span></div></li>
+<li><div class="src-line"><a name="a57"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">void&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a58"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../org-puremvc-php-multicore/INotifier.html#methodsendNotification">sendNotification</a><span class="src-sym">(&nbsp;</span><span class="src-var">$notificationName</span><span class="src-sym">,&nbsp;</span><span class="src-var">$body</span>=<span class="src-id">null</span><span class="src-sym">,&nbsp;</span><span class="src-var">$type</span>=<span class="src-id">null&nbsp;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a62"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Initialize&nbsp;this&nbsp;&lt;b&gt;INotifier&lt;/b&gt;&nbsp;instance.</span></div></li>
+<li><div class="src-line"><a name="a63"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a64"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;is&nbsp;how&nbsp;a&nbsp;Notifier&nbsp;gets&nbsp;its&nbsp;multitonKey.</span></div></li>
+<li><div class="src-line"><a name="a65"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Calls&nbsp;to&nbsp;sendNotification&nbsp;or&nbsp;to&nbsp;access&nbsp;the</span></div></li>
+<li><div class="src-line"><a name="a66"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;facade&nbsp;will&nbsp;fail&nbsp;until&nbsp;after&nbsp;this&nbsp;method</span></div></li>
+<li><div class="src-line"><a name="a67"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;has&nbsp;been&nbsp;called.</span></div></li>
+<li><div class="src-line"><a name="a68"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a69"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$key&nbsp;</span><span class="src-doc">The&nbsp;multitonKey&nbsp;for&nbsp;this&nbsp;&lt;b&gt;INotifier&lt;/b&gt;&nbsp;to&nbsp;use.</span></div></li>
+<li><div class="src-line"><a name="a70"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../org-puremvc-php-multicore/INotifier.html#methodinitializeNotifier">initializeNotifier</a><span class="src-sym">(&nbsp;</span><span class="src-var">$key&nbsp;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a72"></a><span class="src-sym">}</span></div></li>
+</ol>
+</div>
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Mon, 03 Aug 2009 04:57:56 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
