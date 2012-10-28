@@ -7,6 +7,9 @@ The unit tests are included in this repository.
 * [Discussion](http://forums.puremvc.org/index.php?topic=2060.0)
 * [Overview Presentation](http://puremvc.tv/#P002/)
 
+## Utilities
+* [StateMachine](https://github.com/PureMVC/puremvc-php-util-statemachine/wiki)
+
 ## Status
 Production - [Version 1.0] (https://github.com/PureMVC/puremvc-php-multicore-framework/blob/master/VERSION)
 
