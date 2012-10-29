@@ -9,6 +9,7 @@ The unit tests are included in this repository.
 
 ## Utilities
 * [State Machine](https://github.com/PureMVC/puremvc-php-util-statemachine/wiki)
+* [Pipes](https://github.com/PureMVC/puremvc-php-util-pipes/wiki)
 
 ## Status
 Production - [Version 1.0] (https://github.com/PureMVC/puremvc-php-multicore-framework/blob/master/VERSION)
