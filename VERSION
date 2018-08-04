@@ -1,10 +1,14 @@
 PureMVC MultiCore Framework for PHP (Ported)
 --------------------------------------------------------------------------
-Release Date: 10/28/2012
-    Platform: PHP 5 
+Release Date: 08/04/2018
+    Platform: PHP 7
      Version: 1 
-    Revision: 0
+    Revision: 1
        Minor: 0
-     Authors: Michel Chouinard <michel.chouinard@puremvc.org>     		
+     Authors: Michel Chouinard <michel.chouinard@puremvc.org>
+     	    : Michael Beck (https://github.com/mambax7/)
 --------------------------------------------------------------------------
-1.0.0 - Initial MultiCore PHP Port. Based on PureMVC AS3 MultiCore 1.0.5. 
+1.1.0 - updated for PHP 5.6.x - PHP 7.2.8, added namespaces, composer for PHPUnit
+      - added Basic (Zen Garden) demo from the Standard version
+
+1.0.0 - Initial MultiCore PHP Port. Based on PureMVC AS3 MultiCore 1.0.5.

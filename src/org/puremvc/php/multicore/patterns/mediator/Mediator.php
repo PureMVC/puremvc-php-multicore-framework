@@ -1,4 +1,8 @@
 <?php
+namespace puremvc\php\multicore\patterns\mediator;
+use puremvc\php\multicore\interfaces\IMediator;
+use puremvc\php\multicore\interfaces\INotification;
+use puremvc\php\multicore\patterns\observer\Notifier;
 /**
  * PureMVC Multicore Port to PHP
  *
@@ -8,8 +12,9 @@
  *
  * Created on Jully 24, 2009
  *
- * @version 1.0
+ * @version 1.1
  * @author Michel Chouinard <michel.chouinard@gmail.com>
+ * @author Michael Beck (https://github.com/mambax7/)
  * @copyright PureMVC - Copyright(c) 2006-2008 Futurescale, Inc., Some rights reserved.
  * @license http://creativecommons.org/licenses/by/3.0/ Creative Commons Attribution 3.0 Unported License
  * @package org.puremvc.php.multicore
@@ -19,9 +24,6 @@
  *
  */
 
-require_once 'org/puremvc/php/multicore/interfaces/INotification.php';
-require_once 'org/puremvc/php/multicore/interfaces/IMediator.php';
-require_once 'org/puremvc/php/multicore/patterns/observer/Notifier.php';
 /**
  * A base <b>IMediator</b> implementation.
  *
@@ -56,7 +58,7 @@ require_once 'org/puremvc/php/multicore/patterns/observer/Notifier.php';
  * @see View
         org.puremvc.php.multicore.core.View.php
  */
-class Mediator extends Notifier implements IMediator, INotifier
+class Mediator extends Notifier implements IMediator
 {
 
     /**

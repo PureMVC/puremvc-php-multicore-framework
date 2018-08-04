@@ -6,21 +6,18 @@
  *
  * Created on Jully 24, 2009
  *
- * @version 1.0
+ * @version 1.1
  * @author Michel Chouinard <michel.chouinard@gmail.com>
+ * @author Michael Beck (https://github.com/mambax7/)
  * @copyright PureMVC - Copyright(c) 2006-2008 Futurescale, Inc., Some rights reserved.
  * @license http://creativecommons.org/licenses/by/3.0/ Creative Commons Attribution 3.0 Unported License
  * @package org.puremvc.php.multicore.unittest
  */
-/**
- *
- */
 
-require_once 'org/puremvc/php/multicore/core/Controller.php';
-require_once 'org/puremvc/php/multicore/interfaces/IController.php';
-require_once 'org/puremvc/php/multicore/patterns/observer/Notification.php';
-
-require_once 'PHPUnit/Framework/TestCase.php';
+use puremvc\php\multicore\core\Controller;
+use puremvc\php\multicore\interfaces\IController;
+use puremvc\php\multicore\patterns\observer\Notification;
+use puremvc\php\multicore\core\View;
 
 require_once 'ControllerTestCommand.php';
 require_once 'ControllerTestCommand2.php';
@@ -35,7 +32,7 @@ require_once 'ControllerTestVO.php';
         org\puremvc\php\multicore\core\controller\ControllerTestCommand.php
  * @package org.puremvc.php.multicore.unittest
  */
-class ControllerTest extends PHPUnit_Framework_TestCase
+class ControllerTest extends PHPUnit\Framework\TestCase
 {
     /**
      * @var Controller
@@ -56,13 +53,6 @@ class ControllerTest extends PHPUnit_Framework_TestCase
     protected function tearDown()
     {
         parent::tearDown();
-    }
-
-    /**
-     * Constructs the test case.
-     */
-    public function __construct()
-    {
     }
 
 
