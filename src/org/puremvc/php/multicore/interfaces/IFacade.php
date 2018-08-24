@@ -1,4 +1,9 @@
 <?php
+namespace puremvc\php\multicore\interfaces;
+use puremvc\php\multicore\interfaces\INotifier;
+use puremvc\php\multicore\interfaces\INotification;
+use puremvc\php\multicore\interfaces\IProxy;
+use puremvc\php\multicore\interfaces\IMediator;
 /**
  * PureMVC Multicore Port to PHP
  *
@@ -8,8 +13,9 @@
  *
  * Created on Jully 24, 2009
  *
- * @version 1.0
+ * @version 1.1
  * @author Michel Chouinard <michel.chouinard@gmail.com>
+ * @author Michael Beck (https://github.com/mambax7/)
  * @copyright PureMVC - Copyright(c) 2006-2008 Futurescale, Inc., Some rights reserved.
  * @license http://creativecommons.org/licenses/by/3.0/ Creative Commons Attribution 3.0 Unported License
  * @package org.puremvc.php.multicore
@@ -18,11 +24,6 @@
 /**
  *
  */
-
-require_once 'org/puremvc/php/multicore/interfaces/INotifier.php';
-require_once 'org/puremvc/php/multicore/interfaces/INotification.php';
-require_once 'org/puremvc/php/multicore/interfaces/IProxy.php';
-require_once 'org/puremvc/php/multicore/interfaces/IMediator.php';
 
 /**
  * The interface definition for a PureMVC Facade.
@@ -35,16 +36,11 @@ require_once 'org/puremvc/php/multicore/interfaces/IMediator.php';
  * the core MVC actors (Model, View, Controller) and
  * the rest of your application.
  *
- * @see IModel
-        org\puremvc\php\multicore\interfaces\IModel.php
- * @see IView
-        org\puremvc\php\multicore\interfaces\IView.php
- * @see IController
-        org\puremvc\php\multicore\interfaces\IController.php
- * @see ICommand
-        org\puremvc\php\multicore\interfaces\ICommand.php
- * @see INotification
-        org\puremvc\php\multicore\interfaces\INotification.php
+ * @see IModel org\puremvc\php\multicore\interfaces\IModel.php
+ * @see IView org\puremvc\php\multicore\interfaces\IView.php
+ * @see IController org\puremvc\php\multicore\interfaces\IController.php
+ * @see ICommand org\puremvc\php\multicore\interfaces\ICommand.php
+ * @see INotification org\puremvc\php\multicore\interfaces\INotification.php
  * @package org.puremvc.php.multicore
  *
  */
@@ -62,7 +58,7 @@ interface IFacade extends INotifier
     public function registerProxy( IProxy $proxy );
 
     /**
-     * Retreive Proxy
+     * Retrieve Proxy
      *
      * Retrieve a previously registered <b>IProxy</b> from the <b>Model</b> by name.
      *
@@ -70,6 +66,16 @@ interface IFacade extends INotifier
      * @return IProxy The <b>IProxy</b> previously regisetered by <var>proxyName</var> with the <b>Model</b>.
      */
     public function retrieveProxy( $proxyName );
+
+    /**
+     * Has Proxy
+     *
+     * Check if a Proxy is registered for the given <var>proxyName</var>.
+     *
+     * @param string $proxyName Name of the <b>Proxy</b> to check for.
+     * @return bool Boolean: Whether a <b>Proxy</b> is currently registered with the given <var>proxyName</var>.
+     */
+    public function hasProxy( $proxyName );
 
     /**
      * Remove Proxy
@@ -81,15 +87,6 @@ interface IFacade extends INotifier
      */
     public function removeProxy( $proxyName );
 
-    /**
-     * Has Proxy
-     *
-     * Check if a Proxy is registered for the given <var>proxyName</var>.
-     *
-     * @param string $proxyName Name of the <b>Proxy</b> to check for.
-     * @return bool Boolean: Whether a <b>Proxy</b> is currently registered with the given <var>proxyName</var>.
-     */
-    public function hasProxy( $proxyName );
 
     /**
      * Register Command
@@ -112,6 +109,22 @@ interface IFacade extends INotifier
     public function removeCommand( $notificationName );
 
     /**
+     * Notify <b>Observer</b>s.
+     *
+     * This method is left public mostly for backward
+     * compatibility, and to allow you to send custom
+     * notification classes using the facade.
+     *
+     * Usually you should just call sendNotification
+     * and pass the parameters, never having to
+     * construct the notification yourself.
+     *
+     * @param INotification $notification The <b>INotification</b> to have the <b>View</b> notify <b>Observers</b> of.
+     * @return void
+     */
+    public function notifyObservers( INotification $notification );
+    
+    /**
      * Has Command
      *
      * Check if a <b>Command</b> is registered for a given <b>Notification</b>
@@ -131,7 +144,7 @@ interface IFacade extends INotifier
     public function registerMediator( IMediator $mediator );
 
     /**
-     * Retreive Mediator
+     * Retrieve Mediator
      *
      * Retrieve a previously registered <b>IMediator</b> instance from the <b>View</b>.
      *
@@ -160,20 +173,6 @@ interface IFacade extends INotifier
      */
     public function hasMediator( $mediatorName );
 
-    /**
-     * Notify <b>Observer</b>s.
-     *
-     * This method is left public mostly for backward
-     * compatibility, and to allow you to send custom
-     * notification classes using the facade.
-     *
-     * Usually you should just call sendNotification
-     * and pass the parameters, never having to
-     * construct the notification yourself.
-     *
-     * @param INotification $notification The <b>INotification</b> to have the <b>View</b> notify <b>Observers</b> of.
-     * @return void
-     */
-    public function notifyObservers( INotification $notification );
+
 
 }

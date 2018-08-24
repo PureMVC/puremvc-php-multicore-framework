@@ -20,13 +20,14 @@
 // Replace this with the absolute location of your copy of 
 // PureMVC PHP Multicore Library or copy the library into the root
 // of this project and set this constant to ''
-defined('PUREMVC_PHP_MULTICORE_LIBRARY_PATH')
-    || define('PUREMVC_PHP_MULTICORE_LIBRARY_PATH', 'D:/eclipse/Workspaces/PureMVC_PHP_MultiCore_1_0_0;');
+//defined('PUREMVC_PHP_MULTICORE_LIBRARY_PATH')
+//    || define('PUREMVC_PHP_MULTICORE_LIBRARY_PATH', 'D:/eclipse/Workspaces/PureMVC_PHP_MultiCore_1_0_0;');
+//
+//
+//set_include_path(PUREMVC_PHP_MULTICORE_LIBRARY_PATH.get_include_path());
 
-
-set_include_path(PUREMVC_PHP_MULTICORE_LIBRARY_PATH.get_include_path());
-
-require_once 'PHPUnit/Framework/TestSuite.php';
+require dirname(__DIR__) . '/vendor/autoload.php';
+require dirname(__DIR__) . '/puremvc_autoloader.php';
 
 require_once 'org/puremvc/php/multicore/core/ControllerTest.php';
 require_once 'org/puremvc/php/multicore/core/ModelTest.php';
@@ -44,7 +45,7 @@ require_once 'org/puremvc/php/multicore/patterns/proxy/ProxyTest.php';
  * Static test suite.
  * @package org.puremvc.php.multicore.unittest
  */
-class AllTestsSuite extends PHPUnit_Framework_TestSuite
+class AllTestsSuite extends PHPUnit\Framework\TestSuite
 {
     /**
      * Constructs the test suite handler.

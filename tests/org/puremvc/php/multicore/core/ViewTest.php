@@ -6,8 +6,9 @@
  *
  * Created on Jully 24, 2009
  *
- * @version 1.0
+ * @version 1.1
  * @author Michel Chouinard <michel.chouinard@gmail.com>
+ * @author Michael Beck (https://github.com/mambax7/)
  * @copyright PureMVC - Copyright(c) 2006-2008 Futurescale, Inc., Some rights reserved.
  * @license http://creativecommons.org/licenses/by/3.0/ Creative Commons Attribution 3.0 Unported License
  * @package org.puremvc.php.multicore.unittest
@@ -16,10 +17,14 @@
  *
  */
 
-require_once 'org/puremvc/php/multicore/core/View.php';
-require_once 'org/puremvc/php/multicore/patterns/observer/Observer.php';
+use puremvc\php\multicore\core\View;
+use puremvc\php\multicore\patterns\observer\Observer;
+use puremvc\php\multicore\patterns\observer\Notification;
+use puremvc\php\multicore\patterns\mediator\Mediator;
+use puremvc\php\multicore\interfaces\INotification;
+use puremvc\php\multicore\interfaces\IView;
 
-require_once 'PHPUnit/Framework/TestCase.php';
+
 
 require_once 'ViewTestNote.php';
 require_once 'ViewTestMediator.php';
@@ -32,7 +37,7 @@ require_once 'ViewTestMediator6.php';
  * Test the PureMVC View class.
  * @package org.puremvc.php.multicore.unittest
  */
-class ViewTest extends PHPUnit_Framework_TestCase
+class ViewTest extends PHPUnit\Framework\TestCase
 {
     /**
      * @var View
@@ -72,11 +77,6 @@ class ViewTest extends PHPUnit_Framework_TestCase
     {
         parent::tearDown ();
     }
-
-    /**
-     * Constructs the test case.
-     */
-    public function __construct(){}
 
     /**
      * Tests the View Singleton Factory Method
