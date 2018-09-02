@@ -12,10 +12,10 @@ The unit tests are included in this repository.
 * [Pipes](https://github.com/PureMVC/puremvc-php-util-pipes/wiki)
 
 ## Status
-Production - [Version 1.0](https://github.com/PureMVC/puremvc-php-multicore-framework/blob/master/VERSION)
+Production - [Version 1.1.0](https://github.com/PureMVC/puremvc-php-multicore-framework/blob/master/VERSION)
 
 ## Platforms / Technologies
-* [PHP](https://secure.php.net/downloads.php#v5.6.37)
+* [PHP 5.3+](https://secure.php.net/downloads.php#v5.6.37)
 
 ## License
 * PureMVC MultiCore Framework for PHP (Ported) - Copyright © 2010-2012 Michel Chouinard
